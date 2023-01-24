@@ -1,0 +1,350 @@
+{
+	"info": {
+		"_postman_id": "1be90729-aeb3-46bc-a673-e233db774190",
+		"name": "Task Manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4849067"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"imrancse019@gmail.com\",\r\n    \"firstName\" : \"Imran\",\r\n    \"lastName\" : \"Hossain\",\r\n    \"mobile\" : \"01760300001\",\r\n    \"password\" : \"123456\",\r\n    \"photo\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/registration",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"registration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"imrancse019@gmail.com\",\r\n    \"password\" : \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/login",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile Update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\" : \"Imran\",\r\n    \"lastName\" : \"Hossain\",\r\n    \"mobile\" : \"01760300002\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/profileUpdate",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"profileUpdate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/profileDetails",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"profileDetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recover Verify Email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/RecoverVerifyEmail/imrancse019@gmail.com",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"RecoverVerifyEmail",
+								"imrancse019@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recover Verify OTP",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}/RecoverVerifyOTP/imrancse019@gmail.com/360687",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"RecoverVerifyOTP",
+								"imrancse019@gmail.com",
+								"360687"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recover Reset Pass",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"imrancse019@gmail.com\",\r\n    \"OTP\" : \"360687\",\r\n    \"password\" : \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/RecoverResetPass",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"RecoverResetPass"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Task 01\",\r\n    \"description\" : \"Task Description\",\r\n    \"status\" : \"New\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/createTask",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"createTask"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/deleteTask/638fa8b1732d3449d745c57d",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"deleteTask",
+								"638fa8b1732d3449d745c57d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/updateTaskStatus/638fab9472366b98829b748f/Complete",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"updateTaskStatus",
+								"638fab9472366b98829b748f",
+								"Complete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Task By Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/listTaskByStatus/New",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"listTaskByStatus",
+								"New"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Task Status Count",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/taskStatusCount",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"taskStatusCount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseURL",
+			"value": "http://localhost:8080/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "Token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzA5NTUzNDIsImRhdGEiOiJpbXJhbmNzZTAxOUBnbWFpbC5jb20iLCJpYXQiOjE2NzA4Njg5NDJ9.wSyfmb8edHtLdCUY9EsR37LqoUJw_0u51DbsEVEjVMY",
+			"type": "string"
+		}
+	]
+}

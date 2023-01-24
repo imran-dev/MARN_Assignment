@@ -10,8 +10,8 @@ MongoClient.connect(URL, function (error, MyMongoClient) {
 
         const DB_SCHOOL = MyMongoClient.db('school');
 
-        // InsertData(DB_SCHOOL);
-        InsertDataMany(DB_SCHOOL);
+        InsertData(DB_SCHOOL);
+        // InsertDataMany(DB_SCHOOL);
 
         // FindAllData(DB_SCHOOL);
         // FindAllByProjection(DB_SCHOOL);
@@ -97,10 +97,8 @@ function FindAllData(DB) {
 }
 
 function FindOneWithCondition(DB) {
-    let students = DB.collection('students');
     let FindObj = {Roll: "02"};
-
-    students.findOne(FindObj, function (error, result) {
+    DB.collection('students').findOne(FindObj, function (error, result) {
         if (error) {
             console.log('Data Not Found');
         } else {
@@ -110,9 +108,8 @@ function FindOneWithCondition(DB) {
 }
 
 function FindOneWithoutCondition(DB) {
-    let students = DB.collection('students');
     let FindObj = {};
-    students.findOne(FindObj, function (error, result) {
+    DB.collection('students').findOne(FindObj, function (error, result) {
         if (error) {
             console.log('Data Not Found');
         } else {
@@ -122,8 +119,7 @@ function FindOneWithoutCondition(DB) {
 }
 
 function DeleteAllData(DB) {
-    const students = DB.collection('students');
-    students.deleteMany(function (error, result) {
+    DB.collection('students').deleteMany(function (error, result) {
         if (error) {
             console.log('All Data Delete Fail');
         } else {
@@ -133,9 +129,8 @@ function DeleteAllData(DB) {
 }
 
 function DeleteOneData(DB) {
-    const students = DB.collection('students');
     const DeleteItem = {Roll: "01"};
-    students.deleteOne(DeleteItem, function (error) {
+    DB.collection('students').deleteOne(DeleteItem, function (error) {
         if (error) {
             console.log('Data Delete Fail');
         } else {
@@ -159,7 +154,8 @@ function InsertDataMany(DB) {
         if (error) {
             console.log('Data Insert Fail');
         } else {
-            console.log(`${result.insertedCount} documents were inserted`);
+            console.log(result);
+            // console.log(`${result.insertedCount} documents were inserted`);
         }
     });
 }
